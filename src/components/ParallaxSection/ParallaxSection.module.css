@@ -8,7 +8,7 @@
 }
 
 .pinContainer {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   position: relative;
   overflow: hidden;
@@ -154,4 +154,20 @@
   text-transform: uppercase;
   color: var(--color-skf-blue);
   z-index: 10;
+}
+
+@media (max-width: 768px) {
+  .midText {
+    max-width: 90vw;
+    font-size: 1.5rem;
+    padding: 0 var(--space-md);
+  }
+
+  .bigText {
+    font-size: 4rem;
+  }
+
+  .measureLine {
+    display: none;
+  }
 }

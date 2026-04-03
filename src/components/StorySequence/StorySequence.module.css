@@ -89,3 +89,22 @@
 .section h3 {
   color: var(--color-text-light);
 }
+
+@media (max-width: 768px) {
+  .content {
+    max-width: 90vw;
+    padding: 0 var(--space-md);
+  }
+
+  .counter {
+    font-size: 5rem;
+  }
+
+  .headline {
+    font-size: 1.8rem;
+  }
+
+  .timeline {
+    gap: var(--space-lg);
+  }
+}

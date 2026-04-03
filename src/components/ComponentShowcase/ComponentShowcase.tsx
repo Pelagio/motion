@@ -1,17 +1,7 @@
-import { useState, useRef, useEffect } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useMotionValue,
-  useTransform,
-} from "framer-motion";
-import {
-  AnimateInView,
-  EASE_FRICTIONLESS,
-  SPRING,
-  useReducedMotion,
-} from "../../motion";
-import styles from "./ComponentShowcase.module.css";
+import { useState, useRef, useEffect } from "react"
+import { motion, AnimatePresence, useMotionValue, useTransform } from "framer-motion"
+import { AnimateInView, EASE_FRICTIONLESS, SPRING, useReducedMotion } from "../../motion"
+import styles from "./ComponentShowcase.module.css"
 
 /* ---- Button ---- */
 function ButtonDemo() {
@@ -28,7 +18,7 @@ function ButtonDemo() {
         Get Started
       </motion.button>
     </div>
-  );
+  )
 }
 
 /* ---- Card ---- */
@@ -53,23 +43,20 @@ function CardDemo() {
         </div>
       </motion.div>
     </div>
-  );
+  )
 }
 
 /* ---- Menu ---- */
-const menuItems = ["Dashboard", "Analytics", "Settings", "Log out"];
+const menuItems = ["Dashboard", "Analytics", "Settings", "Log out"]
 
 function MenuDemo() {
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className={styles.demoCell}>
       <span className={styles.demoLabel}>Menu Reveal</span>
       <div>
-        <button
-          className={styles.menuTrigger}
-          onClick={() => setIsOpen(!isOpen)}
-        >
+        <button className={styles.menuTrigger} onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? "Close menu" : "Open menu"}
         </button>
         <AnimatePresence>
@@ -107,35 +94,35 @@ function MenuDemo() {
         </AnimatePresence>
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Bearing Spinner ---- */
 function SpinnerDemo() {
-  const reduced = useReducedMotion();
-  const c = 50;
-  const outerOuter = 46;
-  const outerInner = 37;
-  const innerOuter = 24;
-  const innerInner = 15;
-  const orbitR = 30.5;
-  const ballR = 6;
-  const ballCount = 6;
-  const bp = "rgba(100,107,120,";
+  const reduced = useReducedMotion()
+  const c = 50
+  const outerOuter = 46
+  const outerInner = 37
+  const innerOuter = 24
+  const innerInner = 15
+  const orbitR = 30.5
+  const ballR = 6
+  const ballCount = 6
+  const bp = "rgba(100,107,120,"
 
   // Progress arc: circumference of the mid-outer-race circle
-  const progressR = (outerOuter + outerInner) / 2;
-  const circumference = 2 * Math.PI * progressR;
+  const progressR = (outerOuter + outerInner) / 2
+  const circumference = 2 * Math.PI * progressR
 
   const balls = Array.from({ length: ballCount }, (_, i) => {
-    const angle = (i / ballCount) * Math.PI * 2 - Math.PI / 2;
+    const angle = (i / ballCount) * Math.PI * 2 - Math.PI / 2
     return {
       cx: c + Math.cos(angle) * orbitR,
       cy: c + Math.sin(angle) * orbitR,
-    };
-  });
+    }
+  })
 
-  const loopDuration = 3;
+  const loopDuration = 3
 
   return (
     <div className={styles.demoCell}>
@@ -149,20 +136,8 @@ function SpinnerDemo() {
           style={{ shapeRendering: "geometricPrecision" }}
         >
           {/* Outer race */}
-          <circle
-            cx={c}
-            cy={c}
-            r={outerOuter}
-            stroke={`${bp}0.4)`}
-            strokeWidth="1"
-          />
-          <circle
-            cx={c}
-            cy={c}
-            r={outerInner}
-            stroke={`${bp}0.4)`}
-            strokeWidth="1"
-          />
+          <circle cx={c} cy={c} r={outerOuter} stroke={`${bp}0.4)`} strokeWidth="1" />
+          <circle cx={c} cy={c} r={outerInner} stroke={`${bp}0.4)`} strokeWidth="1" />
           {/* Outer race track (clean background for arc) */}
           <circle
             cx={c}
@@ -177,7 +152,7 @@ function SpinnerDemo() {
             cx={c}
             cy={c}
             r={progressR}
-            stroke="#0040ff"
+            stroke="var(--color-skf-blue)"
             strokeWidth={10}
             strokeLinecap="round"
             opacity="0.65"
@@ -212,20 +187,8 @@ function SpinnerDemo() {
               ease: "linear",
             }}
           >
-            <circle
-              cx={c}
-              cy={c}
-              r={innerOuter}
-              stroke={`${bp}0.4)`}
-              strokeWidth="1"
-            />
-            <circle
-              cx={c}
-              cy={c}
-              r={innerInner}
-              stroke={`${bp}0.4)`}
-              strokeWidth="1"
-            />
+            <circle cx={c} cy={c} r={innerOuter} stroke={`${bp}0.4)`} strokeWidth="1" />
+            <circle cx={c} cy={c} r={innerInner} stroke={`${bp}0.4)`} strokeWidth="1" />
             <circle
               cx={c}
               cy={c}
@@ -265,13 +228,7 @@ function SpinnerDemo() {
           >
             {balls.map((ball, i) => (
               <g key={i}>
-                <circle
-                  cx={ball.cx}
-                  cy={ball.cy}
-                  r={ballR}
-                  stroke={`${bp}0.5)`}
-                  strokeWidth="1"
-                />
+                <circle cx={ball.cx} cy={ball.cy} r={ballR} stroke={`${bp}0.5)`} strokeWidth="1" />
                 <line
                   x1={ball.cx - ballR * 0.35}
                   y1={ball.cy}
@@ -293,30 +250,18 @@ function SpinnerDemo() {
           </motion.g>
 
           {/* Bore */}
-          <circle
-            cx={c}
-            cy={c}
-            r={innerInner - 3}
-            stroke={`${bp}0.2)`}
-            strokeWidth="0.75"
-          />
+          <circle cx={c} cy={c} r={innerInner - 3} stroke={`${bp}0.2)`} strokeWidth="0.75" />
           {/* Center point */}
-          <circle
-            cx={c}
-            cy={c}
-            r={1.5}
-            stroke={`${bp}0.25)`}
-            strokeWidth="0.75"
-          />
+          <circle cx={c} cy={c} r={1.5} stroke={`${bp}0.25)`} strokeWidth="0.75" />
         </svg>
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Toggle Switch ---- */
 function ToggleDemo() {
-  const [isOn, setIsOn] = useState(false);
+  const [isOn, setIsOn] = useState(false)
 
   return (
     <div className={styles.demoCell}>
@@ -325,15 +270,11 @@ function ToggleDemo() {
         className={`${styles.toggle} ${isOn ? styles.toggleOn : ""}`}
         onClick={() => setIsOn(!isOn)}
       >
-        <motion.div
-          className={styles.toggleKnob}
-          layout
-          transition={SPRING.snappy}
-        />
+        <motion.div className={styles.toggleKnob} layout transition={SPRING.snappy} />
       </button>
       <span className={styles.toggleLabel}>{isOn ? "Active" : "Inactive"}</span>
     </div>
-  );
+  )
 }
 
 /* ---- Accordion ---- */
@@ -353,10 +294,10 @@ const accordionItems = [
     content:
       "Elements flow seamlessly between states. Exit animations inform enter animations, creating an unbroken visual narrative.",
   },
-];
+]
 
 function AccordionDemo() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   return (
     <div className={styles.demoCell}>
@@ -394,36 +335,28 @@ function AccordionDemo() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Toast Notification ---- */
 function ToastDemo() {
-  const [toasts, setToasts] = useState<{ id: number; text: string }[]>([]);
-  const counter = useRef(0);
-  const timersRef = useRef<number[]>([]);
+  const [toasts, setToasts] = useState<{ id: number; text: string }[]>([])
+  const counter = useRef(0)
+  const timersRef = useRef<number[]>([])
 
   useEffect(() => {
-    return () => timersRef.current.forEach(clearTimeout);
-  }, []);
+    return () => timersRef.current.forEach(clearTimeout)
+  }, [])
 
   const addToast = () => {
-    const messages = [
-      "Changes saved",
-      "File uploaded",
-      "Action completed",
-      "Settings updated",
-    ];
-    const id = counter.current++;
-    setToasts((prev) => [
-      ...prev,
-      { id, text: messages[id % messages.length] },
-    ]);
+    const messages = ["Changes saved", "File uploaded", "Action completed", "Settings updated"]
+    const id = counter.current++
+    setToasts((prev) => [...prev, { id, text: messages[id % messages.length] }])
     const timer = window.setTimeout(() => {
-      setToasts((prev) => prev.filter((t) => t.id !== id));
-    }, 2500);
-    timersRef.current.push(timer);
-  };
+      setToasts((prev) => prev.filter((t) => t.id !== id))
+    }, 2500)
+    timersRef.current.push(timer)
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -454,17 +387,17 @@ function ToastDemo() {
         </AnimatePresence>
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Skeleton Loader ---- */
 function SkeletonDemo() {
-  const [loaded, setLoaded] = useState(false);
-  const timerRef = useRef<number>(0);
+  const [loaded, setLoaded] = useState(false)
+  const timerRef = useRef<number>(0)
 
   useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, []);
+    return () => clearTimeout(timerRef.current)
+  }, [])
 
   return (
     <div className={styles.demoCell}>
@@ -472,9 +405,9 @@ function SkeletonDemo() {
       <motion.button
         className={styles.buttonOutline}
         onClick={() => {
-          setLoaded(false);
-          clearTimeout(timerRef.current);
-          timerRef.current = window.setTimeout(() => setLoaded(true), 1800);
+          setLoaded(false)
+          clearTimeout(timerRef.current)
+          timerRef.current = window.setTimeout(() => setLoaded(true), 1800)
         }}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
@@ -484,11 +417,7 @@ function SkeletonDemo() {
       <div className={styles.skeletonCard}>
         <AnimatePresence mode="wait">
           {!loaded ? (
-            <motion.div
-              key="skeleton"
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-            >
+            <motion.div key="skeleton" exit={{ opacity: 0 }} transition={{ duration: 0.2 }}>
               <div
                 className={`${styles.skeletonLine} ${styles.skeletonShimmer}`}
                 style={{ width: "60%", height: 14 }}
@@ -518,34 +447,34 @@ function SkeletonDemo() {
         </AnimatePresence>
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Progress Bar ---- */
 function ProgressDemo() {
-  const [progress, setProgress] = useState(0);
-  const [running, setRunning] = useState(false);
-  const intervalRef = useRef<number>(0);
+  const [progress, setProgress] = useState(0)
+  const [running, setRunning] = useState(false)
+  const intervalRef = useRef<number>(0)
 
   useEffect(() => {
-    return () => clearInterval(intervalRef.current);
-  }, []);
+    return () => clearInterval(intervalRef.current)
+  }, [])
 
   const runProgress = () => {
-    if (running) return;
-    setProgress(0);
-    setRunning(true);
-    let p = 0;
+    if (running) return
+    setProgress(0)
+    setRunning(true)
+    let p = 0
     intervalRef.current = window.setInterval(() => {
-      p += Math.random() * 15 + 5;
+      p += Math.random() * 15 + 5
       if (p >= 100) {
-        p = 100;
-        clearInterval(intervalRef.current);
-        setRunning(false);
+        p = 100
+        clearInterval(intervalRef.current)
+        setRunning(false)
       }
-      setProgress(p);
-    }, 300);
-  };
+      setProgress(p)
+    }, 300)
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -575,17 +504,13 @@ function ProgressDemo() {
         {Math.round(progress)}%
       </motion.span>
     </div>
-  );
+  )
 }
 
 /* ---- Draggable ---- */
 function DragDemo() {
-  const x = useMotionValue(0);
-  const background = useTransform(
-    x,
-    [-100, 0, 100],
-    ["#eb202a", "#0000fe", "#009e2d"],
-  );
+  const x = useMotionValue(0)
+  const background = useTransform(x, [-100, 0, 100], ["#eb202a", "#0000fe", "#009e2d"])
 
   return (
     <div className={styles.demoCell}>
@@ -602,13 +527,13 @@ function DragDemo() {
       </div>
       <span className={styles.dragHint}>Drag left or right</span>
     </div>
-  );
+  )
 }
 
 /* ---- Tabs ---- */
 function TabsDemo() {
-  const [activeTab, setActiveTab] = useState(0);
-  const tabs = ["Overview", "Details", "Activity"];
+  const [activeTab, setActiveTab] = useState(0)
+  const tabs = ["Overview", "Details", "Activity"]
 
   return (
     <div className={styles.demoCell}>
@@ -644,28 +569,28 @@ function TabsDemo() {
         </motion.div>
       </AnimatePresence>
     </div>
-  );
+  )
 }
 
 /* ---- Form Validation ---- */
 function FormDemo() {
-  const [email, setEmail] = useState("");
-  const [state, setState] = useState<"idle" | "error" | "success">("idle");
-  const timerRef = useRef<number>(0);
+  const [email, setEmail] = useState("")
+  const [state, setState] = useState<"idle" | "error" | "success">("idle")
+  const timerRef = useRef<number>(0)
 
   useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, []);
+    return () => clearTimeout(timerRef.current)
+  }, [])
 
   const validate = () => {
     if (!email || !email.includes("@")) {
-      setState("error");
-      clearTimeout(timerRef.current);
-      timerRef.current = window.setTimeout(() => setState("idle"), 1500);
+      setState("error")
+      clearTimeout(timerRef.current)
+      timerRef.current = window.setTimeout(() => setState("idle"), 1500)
     } else {
-      setState("success");
+      setState("success")
     }
-  };
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -687,8 +612,8 @@ function FormDemo() {
           placeholder="Enter email"
           value={email}
           onChange={(e) => {
-            setEmail(e.target.value);
-            if (state !== "idle") setState("idle");
+            setEmail(e.target.value)
+            if (state !== "idle") setState("idle")
           }}
           onKeyDown={(e) => e.key === "Enter" && validate()}
         />
@@ -728,13 +653,13 @@ function FormDemo() {
         Submit
       </motion.button>
     </div>
-  );
+  )
 }
 
 /* ---- Tooltip ---- */
 function TooltipDemo() {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const items = ["Bearings", "Seals", "Lubrication"];
+  const [hovered, setHovered] = useState<number | null>(null)
+  const items = ["Bearings", "Seals", "Lubrication"]
 
   return (
     <div className={styles.demoCell}>
@@ -766,18 +691,18 @@ function TooltipDemo() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Number Counter ---- */
 function CounterDemo() {
-  const [value, setValue] = useState(0);
-  const [key, setKey] = useState(0);
+  const [value, setValue] = useState(0)
+  const [key, setKey] = useState(0)
 
   const trigger = () => {
-    setValue(Math.floor(Math.random() * 9000) + 1000);
-    setKey((k) => k + 1);
-  };
+    setValue(Math.floor(Math.random() * 9000) + 1000)
+    setKey((k) => k + 1)
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -816,32 +741,25 @@ function CounterDemo() {
         Randomize
       </motion.button>
     </div>
-  );
+  )
 }
 
 /* ---- Chip/Tag List ---- */
-const allChips = [
-  "Bearings",
-  "Seals",
-  "Grease",
-  "Housings",
-  "Tools",
-  "Services",
-];
+const allChips = ["Bearings", "Seals", "Grease", "Housings", "Tools", "Services"]
 
 function ChipDemo() {
-  const [chips, setChips] = useState(allChips.slice(0, 3));
+  const [chips, setChips] = useState(allChips.slice(0, 3))
 
   const addChip = () => {
-    const available = allChips.filter((c) => !chips.includes(c));
+    const available = allChips.filter((c) => !chips.includes(c))
     if (available.length > 0) {
-      setChips([...chips, available[0]]);
+      setChips([...chips, available[0]])
     }
-  };
+  }
 
   const removeChip = (chip: string) => {
-    setChips(chips.filter((c) => c !== chip));
-  };
+    setChips(chips.filter((c) => c !== chip))
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -875,12 +793,12 @@ function ChipDemo() {
         Add tag
       </motion.button>
     </div>
-  );
+  )
 }
 
 /* ---- Modal/Dialog ---- */
 function ModalDemo() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   return (
     <div className={styles.demoCell}>
@@ -928,12 +846,12 @@ function ModalDemo() {
         )}
       </AnimatePresence>
     </div>
-  );
+  )
 }
 
 /* ---- Notification Badge ---- */
 function BadgeDemo() {
-  const [count, setCount] = useState(3);
+  const [count, setCount] = useState(3)
 
   return (
     <div className={styles.demoCell}>
@@ -984,23 +902,23 @@ function BadgeDemo() {
         </motion.button>
       </div>
     </div>
-  );
+  )
 }
 
 /* ---- Copy Button ---- */
 function CopyDemo() {
-  const [copied, setCopied] = useState(false);
-  const timerRef = useRef<number>(0);
+  const [copied, setCopied] = useState(false)
+  const timerRef = useRef<number>(0)
 
   useEffect(() => {
-    return () => clearTimeout(timerRef.current);
-  }, []);
+    return () => clearTimeout(timerRef.current)
+  }, [])
 
   const handleCopy = () => {
-    setCopied(true);
-    clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setCopied(false), 2000);
-  };
+    setCopied(true)
+    clearTimeout(timerRef.current)
+    timerRef.current = window.setTimeout(() => setCopied(false), 2000)
+  }
 
   return (
     <div className={styles.demoCell}>
@@ -1060,7 +978,7 @@ function CopyDemo() {
         </AnimatePresence>
       </motion.button>
     </div>
-  );
+  )
 }
 
 /* ---- Export ---- */
@@ -1094,5 +1012,5 @@ export function ComponentShowcase() {
         </div>
       </div>
     </section>
-  );
+  )
 }
