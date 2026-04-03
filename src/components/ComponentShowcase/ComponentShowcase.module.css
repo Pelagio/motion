@@ -654,11 +654,35 @@
 }
 
 @media (max-width: 600px) {
+  .section {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+  }
+
   .grid {
     grid-template-columns: 1fr;
   }
 
+  .demoCell {
+    padding: var(--space-lg);
+  }
+
   .card {
     width: 100%;
+  }
+
+  .dragArea {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .menu,
+  .menuTrigger {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .tabBar {
+    max-width: 100%;
   }
 }

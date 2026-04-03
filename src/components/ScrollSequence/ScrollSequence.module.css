@@ -91,6 +91,14 @@
 }
 
 @media (max-width: 768px) {
+  .pinContainer {
+    overflow: visible;
+  }
+
+  .inner {
+    padding: 0 var(--space-md);
+  }
+
   .cards {
     grid-template-columns: 1fr;
   }
