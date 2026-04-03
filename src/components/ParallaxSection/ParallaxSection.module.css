@@ -1,0 +1,157 @@
+.section {
+  position: relative;
+  height: 350vh;
+  overflow: hidden;
+  padding: 0 !important;
+  margin: 0;
+  background: var(--color-bg-dark);
+}
+
+.pinContainer {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  background: var(--color-bg-dark);
+}
+
+/* Layers */
+.layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+/* Background gradient */
+.bgLayer {
+  background: radial-gradient(
+    ellipse at 30% 40%,
+    #0a1040 0%,
+    var(--color-bg-dark) 70%
+  );
+}
+
+/* Grid -- engineering blueprint feel */
+.gridLayer {
+  opacity: 0.04;
+}
+
+.gridLine {
+  position: absolute;
+  background: white;
+}
+
+.gridLineH {
+  width: 100%;
+  height: 1px;
+}
+
+.gridLineV {
+  width: 1px;
+  height: 100%;
+}
+
+/* Cogs layer */
+.cogsLayer {
+  pointer-events: none;
+}
+
+.cog {
+  position: absolute;
+}
+
+.cogSvg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Mid cogs layer -- different depth */
+.cogsMidLayer {
+  pointer-events: none;
+}
+
+/* Text layers */
+.textLayer {
+  pointer-events: none;
+}
+
+.bigText {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 14rem);
+  color: rgba(255, 255, 255, 0.03);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.midText {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 3.5rem);
+  color: white;
+  text-align: center;
+  max-width: 700px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+.midTextMuted {
+  display: block;
+  font-family: var(--font-body-light);
+  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+  color: rgba(255, 255, 255, 0.4);
+  margin-top: var(--space-lg);
+  letter-spacing: 0;
+  line-height: 1.6;
+}
+
+/* Foreground -- measurement lines */
+.fgLayer {
+  pointer-events: none;
+}
+
+.measureLine {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.measureDash {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.measureDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.4);
+  flex-shrink: 0;
+}
+
+.measureLabel {
+  font-family: var(--font-body-medium);
+  font-size: 0.6rem;
+  color: rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+/* Label */
+.label {
+  position: absolute;
+  top: var(--space-xl);
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body-medium);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-skf-blue);
+  z-index: 10;
+}

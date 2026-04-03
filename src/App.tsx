@@ -7,6 +7,7 @@ import { BearingShowcase } from "./components/BearingShowcase/BearingShowcase";
 import { ScrollSequence } from "./components/ScrollSequence/ScrollSequence";
 import { ComponentShowcase } from "./components/ComponentShowcase/ComponentShowcase";
 import { VideoReveal } from "./components/VideoReveal/VideoReveal";
+import { ParallaxSection } from "./components/ParallaxSection/ParallaxSection";
 import { PageTransition } from "./components/PageTransition/PageTransition";
 import "./styles/global.css";
 
@@ -23,6 +24,7 @@ function App() {
           <ScrollSequence />
           <ComponentShowcase />
           <VideoReveal />
+          <ParallaxSection />
           <PageTransition />
           <footer
             style={{
