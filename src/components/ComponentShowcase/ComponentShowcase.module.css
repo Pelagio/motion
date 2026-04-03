@@ -1,0 +1,664 @@
+.section {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) var(--space-lg);
+}
+
+.inner {
+  max-width: var(--max-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.label {
+  font-family: var(--font-body-medium);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-skf-blue);
+  margin-bottom: var(--space-md);
+  text-align: center;
+}
+
+.heading {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* Shared cell */
+.demoCell {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-md);
+  min-height: 260px;
+  justify-content: center;
+}
+
+.demoLabel {
+  font-family: var(--font-body-medium);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+/* ---- Button ---- */
+.button {
+  padding: 0.6875rem 1.5rem 0.8125rem;
+  background: var(--color-skf-blue);
+  color: white;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body-medium);
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+  position: relative;
+  overflow: hidden;
+}
+
+.buttonGlow {
+  position: absolute;
+  inset: -2px;
+  border-radius: var(--radius-sm);
+  background: var(--color-skf-blue);
+  filter: blur(12px);
+  opacity: 0;
+  z-index: -1;
+  transition: opacity 0.3s;
+}
+
+.button:hover .buttonGlow {
+  opacity: 0.5;
+}
+
+.buttonOutline {
+  padding: 0.5rem 1.25rem;
+  background: transparent;
+  color: var(--color-skf-blue);
+  border: 1px solid var(--color-skf-blue);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body-medium);
+  font-size: 0.85rem;
+}
+
+/* ---- Card ---- */
+.card {
+  width: 240px;
+  height: 160px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: var(--space-lg);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+}
+
+.cardInner {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.cardTitle {
+  font-family: var(--font-body-bold);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+}
+
+/* ---- Menu ---- */
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 200px;
+}
+
+.menuItem {
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  background: transparent;
+  text-align: left;
+}
+
+.menuTrigger {
+  padding: var(--space-sm) var(--space-md);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body-medium);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  cursor: pointer;
+  width: 200px;
+  text-align: left;
+}
+
+/* ---- Spinner ---- */
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---- Toggle ---- */
+.toggle {
+  width: 56px;
+  height: 30px;
+  border-radius: var(--radius-full);
+  background: var(--color-disabled);
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.toggleOn {
+  background: var(--color-skf-blue);
+  justify-content: flex-end;
+}
+
+.toggleKnob {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+.toggleLabel {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Accordion ---- */
+.accordion {
+  width: 100%;
+  max-width: 300px;
+}
+
+.accordionItem {
+  border-bottom: 1px solid var(--color-border);
+}
+
+.accordionItem:last-child {
+  border-bottom: none;
+}
+
+.accordionTrigger {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-sm) 0;
+  font-size: 0.85rem;
+  color: var(--color-text);
+  text-align: left;
+  background: none;
+}
+
+.accordionTrigger:hover {
+  color: var(--color-skf-blue);
+}
+
+.accordionIcon {
+  font-size: 1rem;
+  display: inline-block;
+  color: var(--color-text-muted);
+}
+
+.accordionContent {
+  padding: 0 0 var(--space-sm);
+  font-size: 0.8rem;
+  line-height: 1.5;
+  color: var(--color-text-muted);
+}
+
+/* ---- Toast ---- */
+.toastStack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  min-height: 48px;
+  width: 100%;
+  max-width: 220px;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  box-shadow: var(--shadow-card);
+}
+
+.toastIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: white;
+  font-size: 0.65rem;
+  flex-shrink: 0;
+}
+
+/* ---- Skeleton ---- */
+.skeletonCard {
+  width: 100%;
+  max-width: 220px;
+  min-height: 70px;
+}
+
+.skeletonLine {
+  border-radius: var(--radius-sm);
+  background: var(--color-disabled);
+  margin-bottom: var(--space-sm);
+}
+
+.skeletonLine:last-child {
+  margin-bottom: 0;
+}
+
+.skeletonShimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-disabled) 25%,
+    #e0e0e0 50%,
+    var(--color-disabled) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.skeletonText {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  line-height: 1.4;
+}
+
+/* ---- Progress ---- */
+.progressTrack {
+  width: 100%;
+  max-width: 220px;
+  height: 6px;
+  background: var(--color-disabled);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.progressBar {
+  height: 100%;
+  background: var(--color-skf-blue);
+  border-radius: var(--radius-full);
+}
+
+.progressValue {
+  font-family: var(--font-body-medium);
+  font-size: 0.85rem;
+  color: var(--color-text);
+}
+
+/* ---- Drag ---- */
+.dragArea {
+  width: 220px;
+  height: 48px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.dragHandle {
+  width: 40px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  cursor: grab;
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.dragHint {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Tabs ---- */
+.tabBar {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--color-border);
+  width: 100%;
+  max-width: 260px;
+}
+
+.tabItem {
+  flex: 1;
+  padding: var(--space-sm) var(--space-sm);
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  position: relative;
+  background: none;
+  text-align: center;
+}
+
+.tabItemActive {
+  color: var(--color-skf-blue);
+}
+
+.tabUnderline {
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--color-skf-blue);
+}
+
+.tabContent {
+  padding: var(--space-md) 0;
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  text-align: center;
+}
+
+/* ---- Form Validation ---- */
+.formGroup {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+}
+
+.input {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 2.5rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--color-text);
+  background: white;
+  outline: none;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.input:focus {
+  border-color: var(--color-skf-blue);
+  box-shadow: 0 0 0 3px rgba(0, 0, 254, 0.1);
+}
+
+.inputError {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(235, 32, 42, 0.1);
+}
+
+.inputSuccess {
+  border-color: var(--color-success);
+  box-shadow: 0 0 0 3px rgba(0, 158, 45, 0.1);
+}
+
+.inputCheck {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--color-success);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+}
+
+.errorMsg {
+  font-size: 0.75rem;
+  color: var(--color-error);
+}
+
+/* ---- Tooltip ---- */
+.tooltipRow {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.tooltipTarget {
+  position: relative;
+  padding: var(--space-sm) var(--space-md);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  color: var(--color-text);
+  cursor: default;
+}
+
+.tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-xs) var(--space-sm);
+  background: var(--color-text);
+  color: white;
+  font-size: 0.7rem;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.tooltipArrow {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 8px;
+  height: 8px;
+  background: var(--color-text);
+}
+
+/* ---- Number Counter ---- */
+.counterDisplay {
+  display: flex;
+  gap: 2px;
+}
+
+.digitSlot {
+  width: 32px;
+  height: 44px;
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  color: var(--color-text);
+  overflow: hidden;
+}
+
+/* ---- Chip / Tag List ---- */
+.chipList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  min-height: 36px;
+  justify-content: center;
+}
+
+.chip {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-sm);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.chip:hover {
+  border-color: var(--color-error);
+  color: var(--color-error);
+}
+
+.chipX {
+  font-size: 0.9rem;
+  line-height: 1;
+  opacity: 0.5;
+}
+
+/* ---- Modal ---- */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(2, 17, 92, 0.3);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modalCard {
+  background: white;
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  max-width: 320px;
+  width: 90%;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+  text-align: center;
+}
+
+.modalTitle {
+  font-size: 1.1rem;
+  margin-bottom: var(--space-sm);
+  color: var(--color-text);
+}
+
+.modalBody {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-lg);
+  line-height: 1.5;
+}
+
+/* ---- Badge ---- */
+.badgeWrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.badgeIcon {
+  padding: var(--space-sm);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: var(--color-error);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badgeButtons {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* ---- Copy Button ---- */
+.copyButton {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  background: white;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  color: var(--color-text);
+  cursor: pointer;
+}
+
+.copyButton:hover {
+  border-color: var(--color-skf-blue);
+  color: var(--color-skf-blue);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 960px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    width: 100%;
+  }
+}

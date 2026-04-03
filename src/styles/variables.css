@@ -1,0 +1,62 @@
+:root {
+  /* SKF Brand Colors */
+  --color-skf-blue: #0000fe;
+  --color-skf-navy: #02115c;
+  --color-skf-blue-glow: rgba(0, 0, 254, 0.3);
+
+  /* Surfaces */
+  --color-bg: #ffffff;
+  --color-bg-dark: #02115c;
+  --color-surface: #f5f5f5;
+  --color-surface-hover: #ecece0;
+  --color-beige: #ecece0;
+
+  /* Text */
+  --color-text: #02115c;
+  --color-text-light: #ffffff;
+  --color-text-muted: #676f7c;
+  --color-text-slate: #485a64;
+
+  /* Functional */
+  --color-border: rgba(2, 17, 92, 0.12);
+  --color-border-light: rgba(255, 255, 255, 0.15);
+  --color-disabled: #cccccc;
+  --color-disabled-text: #949494;
+  --color-success: #009e2d;
+  --color-error: #eb202a;
+
+  /* Typography - SKF Sans from fonts.skf.com, fallback to Inter */
+  --font-display: "SKF Display Bold", "Inter", system-ui, sans-serif;
+  --font-body: "SKF Sans Regular", "Inter", system-ui, sans-serif;
+  --font-body-medium: "SKF Sans Medium", "Inter", system-ui, sans-serif;
+  --font-body-bold: "SKF Sans Bold", "Inter", system-ui, sans-serif;
+  --font-body-light: "SKF Sans Light", "Inter", system-ui, sans-serif;
+
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 2rem;
+  --space-xl: 4rem;
+  --space-2xl: 8rem;
+
+  /* Easing - SKF Motion Principles */
+  --ease-frictionless: cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-precise: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-continuous: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Radius - SKF uses very subtle rounding */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-glow: 0 0 40px var(--color-skf-blue-glow);
+  --shadow-card: 0 2px 16px rgba(2, 17, 92, 0.08);
+  --shadow-card-hover: 0 8px 32px rgba(2, 17, 92, 0.12);
+
+  /* Layout */
+  --nav-height: 64px;
+  --max-width: 1200px;
+}

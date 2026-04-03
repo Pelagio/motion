@@ -1,0 +1,31 @@
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-skf-blue);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--color-skf-blue);
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0.7;
+}
+
+@media (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}
