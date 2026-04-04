@@ -10,8 +10,14 @@ const STRINGS = /(["'`])(?:(?=(\\?))\2.)*?\1/g;
 const NUMBERS = /\b(\d+\.?\d*)\b/g;
 const COMMENTS = /(\/\/.*$)/gm;
 
+/** Escape HTML entities. Code input must be from trusted hardcoded sources. */
 function escapeHtml(str: string): string {
-  return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function tokenize(code: string): string {
@@ -74,11 +80,15 @@ export function CodeSnippet({ code, visible, onClose }: CodeSnippetProps) {
     return () => clearTimeout(timerRef.current);
   }, []);
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(code);
-    setCopied(true);
-    clearTimeout(timerRef.current);
-    timerRef.current = window.setTimeout(() => setCopied(false), 2000);
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      setCopied(true);
+      clearTimeout(timerRef.current);
+      timerRef.current = window.setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // Clipboard unavailable (non-secure context or iframe)
+    }
   };
 
   return (

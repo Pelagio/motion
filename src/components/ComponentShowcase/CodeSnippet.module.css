@@ -51,7 +51,7 @@
   overflow: auto;
   padding: var(--space-md);
   margin: 0;
-  font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  font-family: var(--font-mono);
   font-size: 0.75rem;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.85);
@@ -75,7 +75,7 @@
   justify-content: center;
   cursor: pointer;
   color: var(--color-text-muted);
-  font-family: "SF Mono", monospace;
+  font-family: var(--font-mono);
   font-size: 0.7rem;
   font-weight: 600;
   transition:

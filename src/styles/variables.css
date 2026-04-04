@@ -25,12 +25,13 @@
   --color-success: #009e2d;
   --color-error: #eb202a;
 
-  /* Typography - SKF Sans from fonts.skf.com, fallback to Inter */
+  /* Typography */
   --font-display: "SKF Display Bold", "Inter", system-ui, sans-serif;
   --font-body: "SKF Sans Regular", "Inter", system-ui, sans-serif;
   --font-body-medium: "SKF Sans Medium", "Inter", system-ui, sans-serif;
   --font-body-bold: "SKF Sans Bold", "Inter", system-ui, sans-serif;
   --font-body-light: "SKF Sans Light", "Inter", system-ui, sans-serif;
+  --font-mono: "SF Mono", "Fira Code", "Cascadia Code", monospace;
 
   /* Spacing */
   --space-xs: 0.25rem;
@@ -51,12 +52,35 @@
   --radius-lg: 12px;
   --radius-full: 9999px;
 
+  /* Alpha variants */
+  --color-white-80: rgba(255, 255, 255, 0.8);
+  --color-white-60: rgba(255, 255, 255, 0.6);
+  --color-white-50: rgba(255, 255, 255, 0.5);
+  --color-white-40: rgba(255, 255, 255, 0.4);
+  --color-white-15: rgba(255, 255, 255, 0.15);
+  --color-white-10: rgba(255, 255, 255, 0.1);
+  --color-overlay: rgba(2, 17, 92, 0.3);
+
   /* Shadows */
   --shadow-glow: 0 0 40px var(--color-skf-blue-glow);
   --shadow-card: 0 2px 16px rgba(2, 17, 92, 0.08);
   --shadow-card-hover: 0 8px 32px rgba(2, 17, 92, 0.12);
+  --shadow-knob: 0 1px 3px rgba(0, 0, 0, 0.15);
 
   /* Layout */
   --nav-height: 64px;
   --max-width: 1200px;
+
+  /* z-index scale */
+  --z-content: 1;
+  --z-sticky: 100;
+  --z-overlay: 200;
+  --z-modal: 300;
+  --z-loader: 1000;
+
+  /* Breakpoints (reference -- CSS custom properties can't be used in @media)
+     sm: 600px   -- mobile
+     md: 768px   -- tablet
+     lg: 960px   -- desktop
+  */
 }

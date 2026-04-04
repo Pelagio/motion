@@ -14,8 +14,9 @@ export function ReducedMotionProvider({
   children: ReactNode;
   forceValue?: boolean | null;
 }) {
-  const [override, setOverride] = useState<boolean | null>(forceValue ?? null);
-  const value = forceValue !== undefined ? forceValue : override;
+  const [override, setOverride] = useState<boolean | null>(null);
+  // forceValue prop always wins when provided
+  const value = forceValue != null ? forceValue : override;
 
   return (
     <ReducedMotionContext.Provider value={{ override: value, setOverride }}>

@@ -574,7 +574,6 @@ export function Modal({ children, open, onClose, className }: ModalProps) {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
           onClick={onClose}
-          onKeyDown={(e) => e.key === "Escape" && onClose()}
           className={className}
           style={{
             position: "fixed",

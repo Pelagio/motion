@@ -148,6 +148,12 @@ h3 {
   background-size: 256px 256px;
 }
 
+/* ── Focus ── */
+*:focus-visible {
+  outline: 2px solid var(--color-skf-blue);
+  outline-offset: 2px;
+}
+
 /* ── Reduced Motion ── */
 @media (prefers-reduced-motion: reduce) {
   *,
