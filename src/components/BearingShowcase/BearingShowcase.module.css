@@ -118,14 +118,36 @@
   .staticLayout {
     flex-direction: column;
     text-align: center;
+    gap: var(--space-lg);
   }
 
   .bearingWrap {
-    width: 280px;
-    height: 280px;
+    width: 220px;
+    height: 220px;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
   }
 
   .callouts {
     align-items: center;
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 600px) {
+  .bearingWrap {
+    width: 180px;
+    height: 180px;
+  }
+
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
   }
 }
