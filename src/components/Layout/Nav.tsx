@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
 import { SPRING, EASE_FRICTIONLESS, DURATION } from "../../motion";
 import { Magnetic } from "../Magnetic/Magnetic";
+import { PerfOverlay } from "../PerfOverlay/PerfOverlay";
+import perfStyles from "../PerfOverlay/PerfOverlay.module.css";
 import styles from "./Nav.module.css";
 
 const sections = [
@@ -88,6 +90,7 @@ export function Nav() {
   });
   const active = useActiveSection();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showPerf, setShowPerf] = useState(false);
 
   return (
     <>
@@ -137,6 +140,17 @@ export function Nav() {
           ))}
         </ul>
 
+        <motion.button
+          className={`${perfStyles.perfToggle} ${showPerf ? perfStyles.perfToggleActive : ""}`}
+          onClick={() => setShowPerf(!showPerf)}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.4 }}
+        >
+          <span className={perfStyles.perfDot} />
+          FPS
+        </motion.button>
+
         {/* Mobile hamburger */}
         <button
           className={styles.hamburger}
@@ -185,6 +199,8 @@ export function Nav() {
           </motion.div>
         )}
       </AnimatePresence>
+
+      <PerfOverlay visible={showPerf} />
     </>
   );
 }

@@ -1,0 +1,125 @@
+/* Code overlay panel */
+.panel {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  background: var(--color-bg-dark);
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.panelHeader {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-md);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
+
+.copyBtn,
+.closeBtn {
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: var(--font-body-medium);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-sm);
+  transition: color 0.2s;
+}
+
+.copyBtn:hover,
+.closeBtn:hover {
+  color: white;
+}
+
+.closeBtn {
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0 var(--space-xs);
+}
+
+.code {
+  flex: 1;
+  overflow: auto;
+  padding: var(--space-md);
+  margin: 0;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", monospace;
+  font-size: 0.75rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  white-space: pre;
+  tab-size: 2;
+}
+
+/* Toggle button in demo cell corner */
+.toggle {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 5;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-text-muted);
+  font-family: "SF Mono", monospace;
+  font-size: 0.7rem;
+  font-weight: 600;
+  transition:
+    color 0.2s,
+    border-color 0.2s,
+    background 0.2s;
+}
+
+.toggle:hover {
+  color: var(--color-skf-blue);
+  border-color: var(--color-skf-blue);
+  background: rgba(0, 0, 254, 0.05);
+}
+
+.toggleActive {
+  color: white;
+  border-color: transparent;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.toggleActive:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.25);
+  border-color: transparent;
+}
+
+/* Syntax highlighting tokens */
+.keyword {
+  color: #7da1ff;
+}
+
+.tag {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.string {
+  color: #a8e6a1;
+}
+
+.number {
+  color: #e8a85a;
+}
+
+.comment {
+  color: rgba(255, 255, 255, 0.35);
+  font-style: italic;
+}

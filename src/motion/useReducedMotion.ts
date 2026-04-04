@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
+import { useReducedMotionContext } from "./ReducedMotionContext";
 
 const QUERY = "(prefers-reduced-motion: reduce)";
 
 /**
  * Returns `true` when the user prefers reduced motion.
- * Listens for live changes (e.g. toggling in system settings).
- *
- * Usage:
- *   const reduced = useReducedMotion();
- *   <motion.div animate={reduced ? {} : { scale: 1.1 }} />
+ * Checks the ReducedMotionContext override first (for simulated toggle),
+ * then falls back to the OS media query.
  */
 export function useReducedMotion(): boolean {
+  const override = useReducedMotionContext();
+
   const [reduced, setReduced] = useState(() => {
     if (typeof window === "undefined") return false;
     return window.matchMedia(QUERY).matches;
@@ -23,5 +23,6 @@ export function useReducedMotion(): boolean {
     return () => mql.removeEventListener("change", handler);
   }, []);
 
+  if (override !== null) return override;
   return reduced;
 }

@@ -1,7 +1,7 @@
 import type { EasingDefinition } from "framer-motion";
 
 /**
- * SKF Vertevo Motion Tokens
+ * Motion Tokens
  *
  * Centralized animation constants for the motion system.
  * Import these instead of defining inline values.

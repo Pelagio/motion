@@ -33,6 +33,11 @@
   gap: var(--space-lg);
 }
 
+/* Cell wrapper for code overlay positioning */
+.demoCellWrap {
+  position: relative;
+}
+
 /* Shared cell */
 .demoCell {
   background: var(--color-surface);

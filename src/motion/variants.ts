@@ -2,7 +2,7 @@ import type { Variants } from "framer-motion";
 import { EASE_FRICTIONLESS, DURATION, STAGGER } from "./tokens";
 
 /**
- * SKF Vertevo Reusable Animation Variants
+ * Reusable Animation Variants
  *
  * Plug these into any Motion component via the `variants` prop.
  * Designed to degrade gracefully when reduced motion is preferred.

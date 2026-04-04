@@ -9,11 +9,12 @@ import { ComponentShowcase } from "./components/ComponentShowcase/ComponentShowc
 import { VideoReveal } from "./components/VideoReveal/VideoReveal";
 import { ParallaxSection } from "./components/ParallaxSection/ParallaxSection";
 import { PageTransition } from "./components/PageTransition/PageTransition";
+import { ReducedMotionProvider } from "./motion";
 import "./styles/global.css";
 
 function App() {
   return (
-    <>
+    <ReducedMotionProvider>
       <SmoothScroll>
         <PageLoader />
         <Nav />
@@ -39,7 +40,7 @@ function App() {
           </footer>
         </main>
       </SmoothScroll>
-    </>
+    </ReducedMotionProvider>
   );
 }
 
