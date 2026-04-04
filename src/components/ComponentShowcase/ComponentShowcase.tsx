@@ -14,7 +14,6 @@ import {
   Presence,
   Collapse,
   Stagger,
-  SwapText,
   Shake,
 } from "../../motion";
 import { CodeSnippet } from "./CodeSnippet";

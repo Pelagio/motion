@@ -253,6 +253,7 @@ export function Toggle({ checked, onChange, className }: ToggleProps) {
       role="switch"
       aria-checked={checked}
       onClick={() => onChange(!checked)}
+      className={className}
       style={{
         width: 56,
         height: 30,
@@ -455,7 +456,12 @@ interface ToastProps {
 
 export function Toast({ message, visible, className }: ToastProps) {
   return (
-    <Presence visible={visible} preset="slideUp" spring="default">
+    <Presence
+      visible={visible}
+      preset="slideUp"
+      spring="default"
+      className={className}
+    >
       <div
         style={{
           display: "flex",
@@ -663,6 +669,7 @@ interface ProgressBarProps {
 export function ProgressBar({ value, className }: ProgressBarProps) {
   return (
     <div
+      className={className}
       style={{
         width: "100%",
         height: 6,
@@ -694,7 +701,7 @@ interface CounterProps {
 
 export function Counter({ value, digits = 4, className }: CounterProps) {
   return (
-    <div style={{ display: "flex", gap: 2 }}>
+    <div className={className} style={{ display: "flex", gap: 2 }}>
       {String(value)
         .padStart(digits, "0")
         .split("")
@@ -731,7 +738,10 @@ interface ChipListProps {
 
 export function ChipList({ items, onRemove, className }: ChipListProps) {
   return (
-    <div style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}>
+    <div
+      className={className}
+      style={{ display: "flex", flexWrap: "wrap", gap: "0.5rem" }}
+    >
       <AnimatePresence>
         {items.map((item) => (
           <motion.button
@@ -789,7 +799,7 @@ export function CopyButton({ text, className }: CopyButtonProps) {
   };
 
   return (
-    <Pressable hover="subtle">
+    <Pressable hover="subtle" className={className}>
       <button
         onClick={handleCopy}
         style={{
@@ -873,6 +883,7 @@ export function Skeleton({ children, loaded, className }: SkeletonProps) {
       {loaded ? (
         <motion.div
           key="content"
+          className={className}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, ease: EASE_FRICTIONLESS }}
