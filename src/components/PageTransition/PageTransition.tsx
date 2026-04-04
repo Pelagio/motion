@@ -67,10 +67,12 @@ export function PageTransition() {
         <p className={styles.label}>Page Transitions</p>
         <h2 className={styles.heading}>Seamless Navigation</h2>
 
-        <div className={styles.tabs}>
+        <div className={styles.tabs} role="tablist">
           {pages.map((page, i) => (
             <button
               key={page.id}
+              role="tab"
+              aria-selected={i === activeIndex}
               className={`${styles.tab} ${i === activeIndex ? styles.tabActive : ""}`}
               onClick={() => paginate(i)}
             >

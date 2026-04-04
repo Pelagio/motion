@@ -326,6 +326,7 @@ export function AnimatedTabs({
   return (
     <div className={className}>
       <div
+        role="tablist"
         style={{
           display: "flex",
           borderBottom: "1px solid var(--color-border)",
@@ -334,6 +335,8 @@ export function AnimatedTabs({
         {tabs.map((tab, i) => (
           <button
             key={tab}
+            role="tab"
+            aria-selected={i === active}
             onClick={() => onSelect(i)}
             style={{
               flex: 1,
@@ -369,6 +372,7 @@ export function AnimatedTabs({
       </div>
       <SwapText id={active}>
         <div
+          role="tabpanel"
           style={{
             padding: "1rem 0",
             fontSize: "0.85rem",
@@ -407,6 +411,7 @@ export function Accordion({ items, className }: AccordionProps) {
           }}
         >
           <button
+            aria-expanded={openIndex === i}
             onClick={() => setOpenIndex(openIndex === i ? null : i)}
             style={{
               width: "100%",

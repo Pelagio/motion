@@ -129,8 +129,12 @@ export function Nav() {
 
   return (
     <>
-      <motion.div className={styles.progressBar} style={{ scaleX }} />
-      <nav className={styles.nav}>
+      <motion.div
+        className={styles.progressBar}
+        style={{ scaleX }}
+        aria-hidden="true"
+      />
+      <nav className={styles.nav} aria-label="Main navigation">
         <motion.a
           href="#hero"
           className={styles.logo}
@@ -181,6 +185,8 @@ export function Nav() {
           <motion.button
             className={`${perfStyles.perfToggle} ${showPerf ? perfStyles.perfToggleActive : ""}`}
             onClick={() => setShowPerf(!showPerf)}
+            aria-expanded={showPerf}
+            aria-label="Performance overlay"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.4 }}

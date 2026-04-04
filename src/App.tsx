@@ -29,18 +29,18 @@ function AppContent() {
           <VideoReveal />
           <ParallaxSection />
           <PageTransition />
-          <footer
-            style={{
-              textAlign: "center",
-              padding: "4rem 2rem",
-              color: "var(--color-text-muted)",
-              fontSize: "0.85rem",
-              borderTop: "1px solid var(--color-border)",
-            }}
-          >
-            Motion Showcase &mdash; Frictionless. Precise. Continuous.
-          </footer>
         </main>
+        <footer
+          style={{
+            textAlign: "center",
+            padding: "4rem 2rem",
+            color: "var(--color-text-muted)",
+            fontSize: "0.85rem",
+            borderTop: "1px solid var(--color-border)",
+          }}
+        >
+          Motion Showcase &mdash; Frictionless. Precise. Continuous.
+        </footer>
       </SmoothScroll>
     </MotionConfig>
   );

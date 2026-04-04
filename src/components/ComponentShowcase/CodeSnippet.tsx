@@ -105,7 +105,11 @@ export function CodeSnippet({ code, visible, onClose }: CodeSnippetProps) {
             <button className={styles.copyBtn} onClick={handleCopy}>
               {copied ? "Copied!" : "Copy"}
             </button>
-            <button className={styles.closeBtn} onClick={onClose}>
+            <button
+              className={styles.closeBtn}
+              onClick={onClose}
+              aria-label="Close code panel"
+            >
               &times;
             </button>
           </div>

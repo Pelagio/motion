@@ -72,6 +72,8 @@ function MenuDemo() {
       <div>
         <button
           className={styles.menuTrigger}
+          aria-expanded={isOpen}
+          aria-haspopup="true"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? "Close menu" : "Open menu"}
@@ -304,6 +306,9 @@ function ToggleDemo() {
     <div className={styles.demoCell}>
       <span className={styles.demoLabel}>Toggle Switch</span>
       <button
+        role="switch"
+        aria-checked={isOn}
+        aria-label="Toggle switch"
         className={`${styles.toggle} ${isOn ? styles.toggleOn : ""}`}
         onClick={() => setIsOn(!isOn)}
       >
@@ -348,6 +353,7 @@ function AccordionDemo() {
           <div key={i} className={styles.accordionItem}>
             <button
               className={styles.accordionTrigger}
+              aria-expanded={openIndex === i}
               onClick={() => setOpenIndex(openIndex === i ? null : i)}
             >
               <span>{item.title}</span>
@@ -408,7 +414,7 @@ function ToastDemo() {
       >
         Trigger toast
       </motion.button>
-      <div className={styles.toastStack}>
+      <div className={styles.toastStack} role="status" aria-live="polite">
         <AnimatePresence>
           {toasts.map((toast) => (
             <motion.div
@@ -585,10 +591,12 @@ function TabsDemo() {
   return (
     <div className={styles.demoCell}>
       <span className={styles.demoLabel}>Animated Tabs</span>
-      <div className={styles.tabBar}>
+      <div className={styles.tabBar} role="tablist">
         {tabs.map((tab, i) => (
           <button
             key={tab}
+            role="tab"
+            aria-selected={i === activeTab}
             className={`${styles.tabItem} ${i === activeTab ? styles.tabItemActive : ""}`}
             onClick={() => setActiveTab(i)}
           >
@@ -606,6 +614,7 @@ function TabsDemo() {
       <AnimatePresence mode="wait">
         <motion.div
           key={activeTab}
+          role="tabpanel"
           className={styles.tabContent}
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
@@ -646,6 +655,7 @@ function FormDemo() {
         <input
           className={`${styles.input} ${state === "error" ? styles.inputError : ""} ${state === "success" ? styles.inputSuccess : ""}`}
           type="email"
+          aria-label="Email address"
           placeholder="Enter email"
           value={email}
           onChange={(e) => {
@@ -686,8 +696,11 @@ function TooltipDemo() {
           <div
             key={item}
             className={styles.tooltipTarget}
+            tabIndex={0}
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(null)}
+            onFocus={() => setHovered(i)}
+            onBlur={() => setHovered(null)}
           >
             {item}
             <Presence visible={hovered === i} preset="pop" spring="snappy">
@@ -791,6 +804,7 @@ function ChipDemo() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={SPRING.default}
+              aria-label={`Remove ${chip}`}
               onClick={() => removeChip(chip)}
             >
               {chip}
@@ -830,12 +844,16 @@ function ModalDemo() {
       <AnimatePresence>
         {open && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-demo-title"
             className={styles.modalBackdrop}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
             onClick={() => setOpen(false)}
+            onKeyDown={(e) => e.key === "Escape" && setOpen(false)}
           >
             <motion.div
               className={styles.modalCard}
@@ -845,7 +863,9 @@ function ModalDemo() {
               transition={SPRING.default}
               onClick={(e) => e.stopPropagation()}
             >
-              <h3 className={styles.modalTitle}>Dialog Title</h3>
+              <h3 id="modal-demo-title" className={styles.modalTitle}>
+                Dialog Title
+              </h3>
               <p className={styles.modalBody}>
                 Spring-animated modal with backdrop blur and scale entrance.
               </p>
@@ -872,8 +892,8 @@ function BadgeDemo() {
   return (
     <div className={styles.demoCell}>
       <span className={styles.demoLabel}>Notification Badge</span>
-      <div className={styles.badgeWrap}>
-        <div className={styles.badgeIcon}>
+      <div className={styles.badgeWrap} aria-label={`${count} notifications`}>
+        <div className={styles.badgeIcon} aria-hidden="true">
           <svg
             width="24"
             height="24"
@@ -902,6 +922,7 @@ function BadgeDemo() {
       <div className={styles.badgeButtons}>
         <motion.button
           className={styles.buttonOutline}
+          aria-label="Add notification"
           onClick={() => setCount((c) => c + 1)}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
@@ -910,6 +931,7 @@ function BadgeDemo() {
         </motion.button>
         <motion.button
           className={styles.buttonOutline}
+          aria-label="Clear notifications"
           onClick={() => setCount(0)}
           whileHover={{ scale: 1.03 }}
           whileTap={{ scale: 0.97 }}
