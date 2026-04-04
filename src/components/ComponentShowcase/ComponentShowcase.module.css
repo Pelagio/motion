@@ -499,7 +499,6 @@
   font-size: 0.7rem;
   border-radius: var(--radius-sm);
   white-space: nowrap;
-  pointer-events: none;
 }
 
 .tooltipArrow {

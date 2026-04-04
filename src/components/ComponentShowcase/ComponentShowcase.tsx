@@ -697,19 +697,22 @@ function TooltipDemo() {
             key={item}
             className={styles.tooltipTarget}
             tabIndex={0}
+            aria-describedby={hovered === i ? `tooltip-${i}` : undefined}
             onMouseEnter={() => setHovered(i)}
             onMouseLeave={() => setHovered(null)}
             onFocus={() => setHovered(i)}
             onBlur={() => setHovered(null)}
+            onKeyDown={(e) => e.key === "Escape" && setHovered(null)}
           >
             {item}
             <div className={styles.tooltipWrap}>
               <motion.div
+                id={`tooltip-${i}`}
+                role="tooltip"
                 className={styles.tooltip}
+                aria-hidden={hovered !== i}
                 animate={
-                  hovered === i
-                    ? { opacity: 1, y: 0, scale: 1 }
-                    : { opacity: 0, y: 4, scale: 0.97 }
+                  hovered === i ? { opacity: 1, y: 0 } : { opacity: 0, y: 4 }
                 }
                 transition={{ duration: 0.15 }}
                 style={{ pointerEvents: hovered === i ? "auto" : "none" }}
