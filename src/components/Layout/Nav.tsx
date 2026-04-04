@@ -1,6 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, useScroll, useSpring, AnimatePresence } from "framer-motion";
-import { SPRING, EASE_FRICTIONLESS, DURATION } from "../../motion";
+import {
+  SPRING,
+  EASE_FRICTIONLESS,
+  DURATION,
+  useReducedMotion,
+  useReducedMotionOverride,
+} from "../../motion";
 import { Magnetic } from "../Magnetic/Magnetic";
 import { PerfOverlay } from "../PerfOverlay/PerfOverlay";
 import perfStyles from "../PerfOverlay/PerfOverlay.module.css";
@@ -81,6 +87,35 @@ const mobileLinkVariants = {
   },
 };
 
+function ReducedMotionToggle() {
+  const reduced = useReducedMotion();
+  const { setOverride } = useReducedMotionOverride();
+
+  return (
+    <motion.div
+      className={styles.motionToggle}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 1.3, duration: 0.4 }}
+    >
+      <span className={styles.motionToggleLabel}>Motion</span>
+      <button
+        role="switch"
+        aria-checked={!reduced}
+        aria-label={reduced ? "Motion off" : "Motion on"}
+        className={`${styles.motionSwitch} ${!reduced ? styles.motionSwitchOn : ""}`}
+        onClick={() => setOverride(reduced ? false : true)}
+      >
+        <motion.div
+          className={styles.motionSwitchKnob}
+          layout
+          transition={SPRING.snappy}
+        />
+      </button>
+    </motion.div>
+  );
+}
+
 export function Nav() {
   const { scrollYProgress } = useScroll();
   const scaleX = useSpring(scrollYProgress, {
@@ -140,16 +175,20 @@ export function Nav() {
           ))}
         </ul>
 
-        <motion.button
-          className={`${perfStyles.perfToggle} ${showPerf ? perfStyles.perfToggleActive : ""}`}
-          onClick={() => setShowPerf(!showPerf)}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.4 }}
-        >
-          <span className={perfStyles.perfDot} />
-          FPS
-        </motion.button>
+        <div className={styles.navTools}>
+          <ReducedMotionToggle />
+
+          <motion.button
+            className={`${perfStyles.perfToggle} ${showPerf ? perfStyles.perfToggleActive : ""}`}
+            onClick={() => setShowPerf(!showPerf)}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.4 }}
+          >
+            <span className={perfStyles.perfDot} />
+            FPS
+          </motion.button>
+        </div>
 
         {/* Mobile hamburger */}
         <button

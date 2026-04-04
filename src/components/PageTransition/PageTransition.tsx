@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { EASE_FRICTIONLESS } from "../../motion";
+import { EASE_FRICTIONLESS, useReducedMotion } from "../../motion";
 import styles from "./PageTransition.module.css";
 
 const pages = [
@@ -52,6 +52,7 @@ const pageVariants = {
 };
 
 export function PageTransition() {
+  const reduced = useReducedMotion();
   const [[activeIndex, direction], setActive] = useState([0, 0]);
 
   const paginate = (newIndex: number) => {
@@ -90,28 +91,15 @@ export function PageTransition() {
         </div>
 
         <div className={styles.viewport}>
-          <AnimatePresence mode="wait" custom={direction}>
-            <motion.div
-              key={activePage.id}
-              className={styles.page}
-              custom={direction}
-              variants={pageVariants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{
-                duration: 0.4,
-                ease: EASE_FRICTIONLESS,
-              }}
-            >
+          {reduced ? (
+            <div className={styles.page}>
               <div className={styles.pageContent}>
-                <motion.div
+                <div
                   className={styles.pageIcon}
                   style={{ background: activePage.color }}
-                  layoutId="page-icon"
                 >
                   {activePage.icon}
-                </motion.div>
+                </div>
                 <div>
                   <h3 className={styles.pageTitle}>{activePage.title}</h3>
                   <p className={styles.pageDesc}>{activePage.desc}</p>
@@ -124,8 +112,45 @@ export function PageTransition() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          </AnimatePresence>
+            </div>
+          ) : (
+            <AnimatePresence mode="wait" custom={direction}>
+              <motion.div
+                key={activePage.id}
+                className={styles.page}
+                custom={direction}
+                variants={pageVariants}
+                initial="enter"
+                animate="center"
+                exit="exit"
+                transition={{
+                  duration: 0.4,
+                  ease: EASE_FRICTIONLESS,
+                }}
+              >
+                <div className={styles.pageContent}>
+                  <motion.div
+                    className={styles.pageIcon}
+                    style={{ background: activePage.color }}
+                    layoutId="page-icon"
+                  >
+                    {activePage.icon}
+                  </motion.div>
+                  <div>
+                    <h3 className={styles.pageTitle}>{activePage.title}</h3>
+                    <p className={styles.pageDesc}>{activePage.desc}</p>
+                    <div className={styles.features}>
+                      {activePage.features.map((f) => (
+                        <span key={f} className={styles.feature}>
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+          )}
         </div>
       </div>
     </section>

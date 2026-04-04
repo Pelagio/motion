@@ -2,9 +2,14 @@
   position: relative;
   height: 350vh;
   overflow: hidden;
-  padding: 0 !important;
+  padding: 0;
   margin: 0;
   background: var(--color-bg-dark);
+}
+
+.sectionReduced {
+  height: auto;
+  padding: 6rem 2rem;
 }
 
 .pinContainer {

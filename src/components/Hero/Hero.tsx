@@ -1,9 +1,5 @@
 import { motion } from "framer-motion";
-import {
-  EASE_FRICTIONLESS,
-  EASE_CONTINUOUS,
-  useReducedMotion,
-} from "../../motion";
+import { EASE_FRICTIONLESS, EASE_CONTINUOUS } from "../../motion";
 import { TextScramble } from "../TextScramble/TextScramble";
 import { Magnetic } from "../Magnetic/Magnetic";
 import styles from "./Hero.module.css";
@@ -46,22 +42,16 @@ const fadeUp = {
 };
 
 export function Hero() {
-  const reduced = useReducedMotion();
-
   return (
     <section id="hero" className={`${styles.hero} grain`}>
       {/* Background glow - placeholder for Rive */}
       <div className={styles.geometricBg}>
         <motion.div
           className={styles.shape}
-          animate={
-            reduced
-              ? {}
-              : {
-                  scale: [1, 1.2, 1],
-                  rotate: [0, 180, 360],
-                }
-          }
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 180, 360],
+          }}
           transition={{
             duration: 20,
             repeat: Infinity,
@@ -128,7 +118,7 @@ export function Hero() {
         <span>Scroll</span>
         <motion.div
           className={styles.scrollLine}
-          animate={reduced ? {} : { scaleY: [0, 1, 0] }}
+          animate={{ scaleY: [0, 1, 0] }}
           transition={{
             duration: 2,
             repeat: Infinity,

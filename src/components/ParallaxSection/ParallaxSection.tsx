@@ -323,14 +323,46 @@ export function ParallaxSection() {
     return (
       <section
         ref={sectionRef}
-        className={styles.section}
-        style={{
-          height: "auto",
-          padding: "8rem 2rem",
-          background: "var(--color-bg-dark)",
-        }}
+        className={`${styles.section} ${styles.sectionReduced}`}
       >
-        <div style={{ textAlign: "center", maxWidth: 700, margin: "0 auto" }}>
+        {/* Decorative cogs */}
+        <div
+          style={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            opacity: 0.05,
+            pointerEvents: "none",
+            width: 160,
+            height: 160,
+          }}
+        >
+          <CogSvg teeth={12} strokeColor="white" strokeWidth={0.5} />
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            top: "20%",
+            right: "18%",
+            width: 60,
+            height: 60,
+            opacity: 0.04,
+            pointerEvents: "none",
+          }}
+        >
+          <CogSvg teeth={8} strokeColor="white" strokeWidth={0.8} />
+        </div>
+
+        <div
+          style={{
+            textAlign: "center",
+            maxWidth: 600,
+            margin: "0 auto",
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
           <p
             className={styles.label}
             style={{
@@ -341,7 +373,7 @@ export function ParallaxSection() {
           >
             Parallax Depth
           </p>
-          <div className={styles.midText}>
+          <div className={styles.midText} style={{ margin: "0 auto" }}>
             Engineered layers of motion
             <span className={styles.midTextMuted}>
               Scroll-driven parallax with industrial elements at different

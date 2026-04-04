@@ -203,7 +203,13 @@ export function StorySequence() {
       <section
         ref={sectionRef}
         className={`${styles.section} grain`}
-        style={{ padding: "8rem 2rem" }}
+        style={{
+          padding: "8rem 2rem",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          minHeight: "100vh",
+        }}
       >
         <div className={styles.content} style={{ margin: "0 auto" }}>
           <h2 className={styles.headline}>From Chaos to Precision</h2>

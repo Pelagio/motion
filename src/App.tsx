@@ -1,3 +1,4 @@
+import { MotionConfig } from "framer-motion";
 import { Nav } from "./components/Layout/Nav";
 import { PageLoader } from "./components/PageLoader/PageLoader";
 import { SmoothScroll } from "./components/SmoothScroll/SmoothScroll";
@@ -9,12 +10,13 @@ import { ComponentShowcase } from "./components/ComponentShowcase/ComponentShowc
 import { VideoReveal } from "./components/VideoReveal/VideoReveal";
 import { ParallaxSection } from "./components/ParallaxSection/ParallaxSection";
 import { PageTransition } from "./components/PageTransition/PageTransition";
-import { ReducedMotionProvider } from "./motion";
+import { ReducedMotionProvider, useReducedMotion } from "./motion";
 import "./styles/global.css";
 
-function App() {
+function AppContent() {
+  const reduced = useReducedMotion();
   return (
-    <ReducedMotionProvider>
+    <MotionConfig reducedMotion={reduced ? "always" : "never"}>
       <SmoothScroll>
         <PageLoader />
         <Nav />
@@ -40,6 +42,14 @@ function App() {
           </footer>
         </main>
       </SmoothScroll>
+    </MotionConfig>
+  );
+}
+
+function App() {
+  return (
+    <ReducedMotionProvider>
+      <AppContent />
     </ReducedMotionProvider>
   );
 }

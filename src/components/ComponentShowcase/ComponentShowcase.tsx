@@ -9,7 +9,6 @@ import {
   AnimateInView,
   EASE_FRICTIONLESS,
   SPRING,
-  useReducedMotion,
   Pressable,
   Presence,
   Collapse,
@@ -100,7 +99,6 @@ function MenuDemo() {
 
 /* ---- Bearing Spinner ---- */
 function SpinnerDemo() {
-  const reduced = useReducedMotion();
   const c = 50;
   const outerOuter = 46;
   const outerInner = 37;
@@ -174,14 +172,10 @@ function SpinnerDemo() {
               originX: "50%",
               originY: "50%",
             }}
-            animate={
-              reduced
-                ? {}
-                : {
-                    strokeDashoffset: [circumference, 0, 0, circumference],
-                    rotate: [-90, 270, 270, 630],
-                  }
-            }
+            animate={{
+              strokeDashoffset: [circumference, 0, 0, circumference],
+              rotate: [-90, 270, 270, 630],
+            }}
             transition={{
               duration: loopDuration,
               repeat: Infinity,
@@ -193,7 +187,7 @@ function SpinnerDemo() {
           {/* Inner race - counter-rotates */}
           <motion.g
             style={{ originX: "50%", originY: "50%" }}
-            animate={reduced ? {} : { rotate: -360 }}
+            animate={{ rotate: -360 }}
             transition={{
               duration: loopDuration,
               repeat: Infinity,
@@ -233,7 +227,7 @@ function SpinnerDemo() {
             strokeWidth="1"
             strokeDasharray="6 3 1.5 3"
             style={{ originX: "50%", originY: "50%" }}
-            animate={reduced ? {} : { rotate: 360 }}
+            animate={{ rotate: 360 }}
             transition={{
               duration: loopDuration,
               repeat: Infinity,
@@ -244,7 +238,7 @@ function SpinnerDemo() {
           {/* Balls -- orbit only, no fill */}
           <motion.g
             style={{ originX: "50%", originY: "50%" }}
-            animate={reduced ? {} : { rotate: 360 }}
+            animate={{ rotate: 360 }}
             transition={{
               duration: loopDuration,
               repeat: Infinity,
