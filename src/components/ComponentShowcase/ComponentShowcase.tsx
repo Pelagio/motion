@@ -703,12 +703,21 @@ function TooltipDemo() {
             onBlur={() => setHovered(null)}
           >
             {item}
-            <Presence visible={hovered === i} preset="pop" spring="snappy">
-              <div className={styles.tooltip}>
+            <div className={styles.tooltipWrap}>
+              <motion.div
+                className={styles.tooltip}
+                animate={
+                  hovered === i
+                    ? { opacity: 1, y: 0, scale: 1 }
+                    : { opacity: 0, y: 4, scale: 0.97 }
+                }
+                transition={{ duration: 0.15 }}
+                style={{ pointerEvents: hovered === i ? "auto" : "none" }}
+              >
                 {item} solutions
                 <span className={styles.tooltipArrow} />
-              </div>
-            </Presence>
+              </motion.div>
+            </div>
           </div>
         ))}
       </div>
