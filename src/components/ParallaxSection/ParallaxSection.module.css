@@ -8,8 +8,9 @@
 }
 
 .sectionReduced {
-  height: auto;
-  padding: 6rem 2rem;
+  height: 100vh;
+  padding: 0;
+  overflow: hidden;
 }
 
 .pinContainer {

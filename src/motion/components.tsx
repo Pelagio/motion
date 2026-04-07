@@ -7,6 +7,35 @@ import {
 } from "framer-motion";
 import { SPRING, EASE_FRICTIONLESS, STAGGER } from "./tokens";
 
+/* ── Theme Defaults ────────────────────────────────────────
+ *  Injects sensible fallback values for all CSS custom properties
+ *  used by the component library. Consumers can override any of
+ *  these by defining the same variables in their own stylesheets.
+ *  ───────────────────────────────────────────────────────── */
+
+const THEME_DEFAULTS = `
+  :root {
+    --color-primary: var(--color-skf-blue, #0000fe);
+    --color-border: var(--color-border, rgba(0, 0, 0, 0.12));
+    --color-text: var(--color-text, #1a1a2e);
+    --color-text-muted: var(--color-text-muted, #6b7280);
+    --color-disabled: var(--color-disabled, #e5e7eb);
+    --color-success: var(--color-success, #16a34a);
+    --color-error: var(--color-error, #dc2626);
+    --color-overlay: var(--color-overlay, rgba(0, 0, 0, 0.3));
+  }
+`;
+
+if (typeof document !== "undefined") {
+  const id = "motion-theme-defaults";
+  if (!document.getElementById(id)) {
+    const style = document.createElement("style");
+    style.id = id;
+    style.textContent = THEME_DEFAULTS;
+    document.head.appendChild(style);
+  }
+}
+
 /* ── Hover Presets ──────────────────────────────────────── */
 
 const hoverScales = {
@@ -258,7 +287,7 @@ export function Toggle({ checked, onChange, className }: ToggleProps) {
         width: 56,
         height: 30,
         borderRadius: 9999,
-        background: checked ? "var(--color-skf-blue)" : "var(--color-disabled)",
+        background: checked ? "var(--color-primary)" : "var(--color-disabled)",
         padding: 3,
         display: "flex",
         alignItems: "center",
@@ -344,7 +373,7 @@ export function AnimatedTabs({
               fontSize: "0.8rem",
               color:
                 i === active
-                  ? "var(--color-skf-blue)"
+                  ? "var(--color-primary)"
                   : "var(--color-text-muted)",
               background: "none",
               border: "none",
@@ -362,7 +391,7 @@ export function AnimatedTabs({
                   left: 0,
                   right: 0,
                   height: 2,
-                  background: "var(--color-skf-blue)",
+                  background: "var(--color-primary)",
                 }}
               />
             )}
@@ -477,7 +506,7 @@ export function Toast({ message, visible, className }: ToastProps) {
           border: "1px solid var(--color-border)",
           borderRadius: 4,
           fontSize: "0.8rem",
-          boxShadow: "0 2px 16px rgba(2,17,92,0.08)",
+          boxShadow: "0 2px 16px var(--color-shadow, rgba(0,0,0,0.08))",
         }}
       >
         <span
@@ -584,7 +613,7 @@ export function Modal({ children, open, onClose, className }: ModalProps) {
             position: "fixed",
             inset: 0,
             zIndex: 200,
-            background: "rgba(2,17,92,0.3)",
+            background: "var(--color-overlay)",
             backdropFilter: "blur(4px)",
             display: "flex",
             alignItems: "center",
@@ -687,7 +716,7 @@ export function ProgressBar({ value, className }: ProgressBarProps) {
         transition={SPRING.lazy}
         style={{
           height: "100%",
-          background: "var(--color-skf-blue)",
+          background: "var(--color-primary)",
           borderRadius: 9999,
         }}
       />
@@ -852,7 +881,7 @@ export function Spinner() {
         cx={c}
         cy={c}
         r={r}
-        stroke="var(--color-skf-blue)"
+        stroke="var(--color-primary)"
         strokeWidth="8"
         strokeLinecap="round"
         opacity="0.6"
@@ -939,7 +968,7 @@ export function DragSlider() {
   const background = useTransform(
     x,
     [-100, 0, 100],
-    ["#eb202a", "#0000fe", "#009e2d"],
+    ["#dc2626", "#0000fe", "#16a34a"],
   );
   return (
     <div

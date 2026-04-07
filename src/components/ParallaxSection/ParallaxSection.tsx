@@ -323,57 +323,60 @@ export function ParallaxSection() {
     return (
       <section
         ref={sectionRef}
-        className={`${styles.section} ${styles.sectionReduced}`}
+        className={`${styles.section} ${styles.sectionReduced} grain`}
       >
-        {/* Decorative cogs */}
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            opacity: 0.05,
-            pointerEvents: "none",
-            width: 160,
-            height: 160,
-          }}
-        >
-          <CogSvg teeth={12} strokeColor="white" strokeWidth={0.5} />
+        {/* Static background matching the animated version */}
+        <div className={`${styles.layer} ${styles.bgLayer}`} />
+
+        {/* Static cogs at resting positions */}
+        <div className={`${styles.layer} ${styles.cogsLayer}`}>
+          {backCogs.map((cog, i) => (
+            <div
+              key={`b${i}`}
+              className={styles.cog}
+              style={{
+                width: cog.size,
+                height: cog.size,
+                top: cog.top,
+                left: cog.left,
+                right: cog.right,
+                bottom: cog.bottom,
+              }}
+            >
+              <CogSvg
+                teeth={cog.teeth}
+                strokeColor={cog.color}
+                strokeWidth={cog.strokeW}
+              />
+            </div>
+          ))}
         </div>
-        <div
-          style={{
-            position: "absolute",
-            top: "20%",
-            right: "18%",
-            width: 60,
-            height: 60,
-            opacity: 0.04,
-            pointerEvents: "none",
-          }}
-        >
-          <CogSvg teeth={8} strokeColor="white" strokeWidth={0.8} />
+        <div className={`${styles.layer} ${styles.cogsMidLayer}`}>
+          {midCogs.map((cog, i) => (
+            <div
+              key={`m${i}`}
+              className={styles.cog}
+              style={{
+                width: cog.size,
+                height: cog.size,
+                top: cog.top,
+                left: cog.left,
+                right: cog.right,
+                bottom: cog.bottom,
+              }}
+            >
+              <CogSvg
+                teeth={cog.teeth}
+                strokeColor={cog.color}
+                strokeWidth={cog.strokeW}
+              />
+            </div>
+          ))}
         </div>
 
-        <div
-          style={{
-            textAlign: "center",
-            maxWidth: 600,
-            margin: "0 auto",
-            position: "relative",
-            zIndex: 1,
-          }}
-        >
-          <p
-            className={styles.label}
-            style={{
-              position: "static",
-              transform: "none",
-              marginBottom: "1rem",
-            }}
-          >
-            Parallax Depth
-          </p>
-          <div className={styles.midText} style={{ margin: "0 auto" }}>
+        {/* Text content */}
+        <div className={`${styles.layer} ${styles.textLayer}`}>
+          <div className={styles.midText}>
             Engineered layers of motion
             <span className={styles.midTextMuted}>
               Scroll-driven parallax with industrial elements at different
