@@ -140,13 +140,13 @@ export function ScrollSequence() {
                 <p className={styles.cardDesc}>{card.desc}</p>
               </div>
             ))}
-          </div>
-          <div className={styles.progressLine}>
-            <div
-              ref={progressRef}
-              className={styles.progressFill}
-              style={{ height: "100%" }}
-            />
+            <div className={styles.progressLine}>
+              <div
+                ref={progressRef}
+                className={styles.progressFill}
+                style={{ height: "100%" }}
+              />
+            </div>
           </div>
         </div>
       </div>
